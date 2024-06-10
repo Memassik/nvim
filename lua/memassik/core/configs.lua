@@ -1,5 +1,7 @@
 local opt = vim.opt -- for conciseness
 
+vim.o.mouse=a
+
 opt.showmode = false
 -- line numbers
 opt.relativenumber = true -- show relative line numbers

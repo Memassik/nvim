@@ -1,10 +1,11 @@
 --core nvim config
 require("memassik.core.configs")
 require("memassik.core.mappings")
-
---plugins
 require("memassik.plugins-setup")
 require("memassik.core.colorscheme")
+
+--plugins
+require("memassik.plugins.impatient")
 require("memassik.plugins.neotree")
 require("memassik.plugins.telescope")
 require("memassik.plugins.treesitter")
