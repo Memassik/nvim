@@ -85,7 +85,8 @@ require("lazy").setup({
 		opts = {},
 		lazy = false,
 	},
-	{ "voldikss/vim-floaterm" },
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	-- { "voldikss/vim-floaterm" },
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
 	{ "lewis6991/impatient.nvim" },
 	{
@@ -104,5 +105,10 @@ require("lazy").setup({
 			-- …etc.
 		},
 	},
-	{ "Civitasv/cmake-tools.nvim" },
+	{
+		"Civitasv/cmake-tools.nvim",
+		dependencies = {
+			"stevearc/overseer.nvim", -- OPTIONAL: for git status
+		},
+	},
 })

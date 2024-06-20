@@ -23,14 +23,6 @@ require("cmake-tools").setup({
 		short = { show = true }, -- whether to show short message
 		long = { show = true, max_length = 40 }, -- whether to show long message
 	},
-	cmake_dap_configuration = { -- debug settings for cmake
-		name = "cpp",
-		type = "codelldb",
-		request = "launch",
-		stopOnEntry = false,
-		runInTerminal = true,
-		console = "integratedTerminal",
-	},
 	cmake_executor = { -- executor to use
 		name = "quickfix", -- name of the executor
 		opts = {}, -- the options the executor will get, possible values depend on the executor type. See `default_opts` for possible values.
@@ -91,7 +83,7 @@ require("cmake-tools").setup({
 				auto_close_when_success = true, -- typically, you can use it with the "always" option; it will auto-close the quickfix buffer if the execution is successful.
 			},
 			toggleterm = {
-				direction = "float", -- 'vertical' | 'horizontal' | 'tab' | 'float'
+				direction = "tab", -- 'vertical' | 'horizontal' | 'tab' | 'float'
 				close_on_exit = false, -- whether close the terminal when exit
 				auto_scroll = true, -- whether auto scroll to the bottom
 				singleton = true, -- single instance, autocloses the opened one, if present
@@ -119,8 +111,8 @@ require("cmake-tools").setup({
 				keep_terminal_static_location = true, -- Static location of the viewport if avialable
 
 				-- Running Tasks
-				start_insert = false, -- If you want to enter terminal with :startinsert upon using :CMakeRun
-				focus = false, -- Focus on terminal when cmake task is launched.
+				start_insert = true, -- If you want to enter terminal with :startinsert upon using :CMakeRun
+				focus = true, -- Focus on terminal when cmake task is launched.
 				do_not_add_newline = false, -- Do not hit enter on the command inserted when using :CMakeRun, allowing a chance to review or modify the command before hitting enter.
 			},
 		},
@@ -133,3 +125,7 @@ require("cmake-tools").setup({
 	},
 	cmake_virtual_text_support = true, -- Show the target related to current file using virtual text (at right corner)
 })
+
+vim.keymap.set("n", "<leader>cg", ":CMakeGenerate<CR>") -- split window vertically
+vim.keymap.set("n", "<leader>cb", ":CMakeBuild<CR>") -- split window horizontally
+vim.keymap.set("n", "<leader>cr", ":CMakeRun<CR>") -- make split windows equal width & height
