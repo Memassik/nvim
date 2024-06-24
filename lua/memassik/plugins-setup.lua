@@ -88,27 +88,28 @@ require("lazy").setup({
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	-- { "voldikss/vim-floaterm" },
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
-	{ "lewis6991/impatient.nvim" },
-	{
-		"romgrk/barbar.nvim",
-		dependencies = {
-			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
-		},
-		init = function()
-			vim.g.barbar_auto_setup = false
-		end,
-		opts = {
-			-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-			-- animation = true,
-			-- insert_at_start = true,
-			-- …etc.
-		},
-	},
+	-- { "lewis6991/impatient.nvim" },
+	-- {
+	-- 	"romgrk/barbar.nvim",
+	-- 	dependencies = {
+	-- 		"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+	-- 		"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+	-- 	},
+	-- 	init = function()
+	-- 		vim.g.barbar_auto_setup = false
+	-- 	end,
+	-- 	opts = {
+	-- 		-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+	-- 		-- animation = true,
+	-- 		-- insert_at_start = true,
+	-- 		-- …etc.
+	-- 	},
+	-- },
 	{
 		"Civitasv/cmake-tools.nvim",
 		dependencies = {
 			"stevearc/overseer.nvim", -- OPTIONAL: for git status
 		},
 	},
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 })
