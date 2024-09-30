@@ -1,11 +1,5 @@
 return {
     {
-        -- Ensure C/C++ debugger is installed
-        "williamboman/mason.nvim",
-        optional = true,
-        opts = { ensure_installed = { "codelldb" } },
-    },
-    {
         "mfussenegger/nvim-dap",
         optional = true,
         dependencies = {
@@ -54,7 +48,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "cpp" } },
+        opts = { ensure_installed = { "c", "cpp", "cmake" } },
     },
     {
         "neovim/nvim-lspconfig",
@@ -97,6 +91,7 @@ return {
                         clangdFileStatus = true,
                     },
                 },
+                neocmake = {},
             },
             setup = {
                 clangd = function(_, opts)
@@ -106,6 +101,38 @@ return {
                     )
                     return false
                 end,
+            },
+        },
+    },
+    {
+        "Civitasv/cmake-tools.nvim",
+        lazy = true,
+        init = function()
+            local loaded = false
+            local function check()
+                local cwd = vim.uv.cwd()
+                if vim.fn.filereadable(cwd .. "/CMakeLists.txt") == 1 then
+                    require("lazy").load({ plugins = { "cmake-tools.nvim" } })
+                    loaded = true
+                end
+            end
+            check()
+            vim.api.nvim_create_autocmd("DirChanged", {
+                callback = function()
+                    if not loaded then
+                        check()
+                    end
+                end,
+            })
+        end,
+        opts = {},
+    },
+    {
+        "mfussenegger/nvim-lint",
+        optional = true,
+        opts = {
+            linters_by_ft = {
+                cmake = { "cmakelint" },
             },
         },
     },
